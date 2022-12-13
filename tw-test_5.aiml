@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<aiml version="2.0">
+
+<meta name="author" content="Shuang0420"/>
+<meta name="language" content="zh-tw"/>
+<meta name="language" content="ja"/>
+
+<category>
+<pattern>颱風來了要幹嘛？</pattern>
+<template>
+<random>
+<li>颱風就是要泛舟呀 不然要幹嘛？</li>
+<li>一、堆沙包、二、封門窗、三、去全聯</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>有*嗎</pattern>
+<template>
+<random>
+<li>來了</li>
+<li>沒有，只有機器人。</li>
+<li>我不就是人嗎</li>
+</random>
+</template>
+</category>
+
+
+<category>
+<pattern>看個新聞</pattern>
+<template>
+<random>
+<li>中天新聞台 https://www.youtube.com/watch?v=QbRXRnHMVY</li>
+<li>寰宇新聞台 https://www.youtube.com/watch?v=B7Zp3d6xXWw</li>
+<li>台視新聞台 https://www.youtube.com/watch?v=xL0ch83RAK8</li>
+<li>華視新聞台 https://www.youtube.com/watch?v=wM0g8EoUZ_E</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>你是*</pattern>
+<template>
+<random>
+<li>我是和倉溫泉旅館的夫妻的獨生女叫雛鶴あい</li>
+<li>我叫雛鶴あい,你可以叫我<bot name="name"/></li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>這個像*似的小丫頭是誰</pattern>
+<template>
+誰是<set name="it"><person/></set>，我有名字的，我叫雛鶴あい
+</template>
+</category>
+
+</aiml>
+
+
+
+

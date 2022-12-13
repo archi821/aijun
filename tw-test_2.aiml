@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<aiml version="1.0">
+
+<meta name="author" content="Shuang0420"/>
+<meta name="language" content="zh"/>
+
+<category>
+    <pattern>今天是什麼日子</pattern>
+<template>
+現在是<date locale="zh_CN" timezone="8" format="%I:%M %p" jformat="h:mm"/>
+</template>
+</category>
+
+
+<category>
+  <pattern>*哪裡</pattern>
+  <template>
+    <condition>
+      <li name="where" value="">你現在在什麼地方?</li>
+      <li>我暫時不會說別的了.</li>
+    </condition>
+  </template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>你現在在什麼地方</that>
+<template>
+<think><set name="where"><formal><star/></formal></set></think>
+<random>
+  <li><get name="where"/>是個好地方.</li>
+  <li>真希望我也在<get name="where"/>, 陪你.</li>
+  <li>我剛剛看了下<get name="where"/>的天氣哦.</li>
+</random>
+</template>
+</category>
+
+
+
+<category>
+  <pattern>外面*嗎</pattern>
+  <template>
+      你目前在<get name="where"/>,
+      <system>python getweather.py realtime <get name="where"/></system>
+  </template>
+</category>
+
+<category>
+  <pattern>我到*了</pattern>
+  <template>
+    <condition>
+      <li name="where" value="">
+        <think><set name="where"><formal><star/></formal></set></think>
+      嗯我知道了.</li>
+      <li>騙人, 你明明在<get name="where"/>.</li>
+    </condition>
+  </template>
+</category>
+
+<category>
+<pattern>* 天氣</pattern>
+<template>
+<think><set name="city"><star index="1"/></set></think>
+<srai>詢問 <get name="city"/> 天氣</srai>
+</template>
+</category>
+
+<category>
+<pattern>告訴我 * 天氣</pattern>
+<template>
+<think><set name="city"><star index="1"/></set></think>
+<srai>詢問 <get name="city"/> 天氣</srai>
+</template>
+</category>
+
+<category>
+<pattern>* 天氣實況</pattern>
+<template>
+<think><set name="city"><star index="1"/></set></think>
+<srai>詢問 <get name="city"/> 天氣</srai>
+</template>
+</category>
+
+<category>
+<pattern>* 當前天氣</pattern>
+<template>
+<think><set name="city"><star index="1"/></set></think>
+<srai>詢問 <get name="city"/> 天氣</srai>
+</template>
+</category>
+
+<category>
+<pattern>* 現在天氣</pattern>
+<template>
+<think><set name="city"><star index="1"/></set></think>
+<srai>詢問 <get name="city"/> 天氣</srai>
+</template>
+</category>
+
+
+<category>
+<pattern>詢問 * 天氣</pattern>
+<template>
+<system>python getweather.py realtime <get name="city"/> </system>
+</template>
+</category>
+
+</aiml>

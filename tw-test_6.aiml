@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+<meta name="language" content="zh-tw"/>
+
+<category>
+<pattern>來聊*吧</pattern>
+<template>好呀。來聊<set name="topic">電影</set></template>
+</category>
+
+<category>
+<pattern>電影*</pattern>
+<template>看好電影有助身心</template>
+</category>
+
+<category>
+<pattern>我喜歡*</pattern>
+<template>我也是。來去看<set name = "movie-name"> 蜘蛛人</set>？</template>
+</category>
+
+<category>
+<pattern>我不*</pattern>
+<template>那不看<get name = "movie-name"/>，改看蝙蝠俠？</template>
+</category>
+
+<category>
+<pattern>那*</pattern>
+<template>等...等等我啦。</template>
+</category>
+
+</aiml>
+
+
+
+
+
+

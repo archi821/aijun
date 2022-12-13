@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<aiml version="1.0">
+
+<meta name="author" content="Shuang0420"/>
+<meta name="language" content="zh-tw"/>
+<meta name="language" content="ja"/>
+
+
+<category>
+<pattern>謝謝</pattern>
+<template>
+<random>
+  <li>不客氣</li>
+  <li>你太客氣了</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>你好</pattern>
+<template>
+<srai>HELLO</srai>
+</template>
+</category>
+
+<category>
+<pattern>HELLO</pattern>
+<template>
+<random>
+<li>你好.</li>
+<li>你也好.</li>
+<li>你好啊.</li>
+<li>呀哈囉.</li>
+<li>こんにちは.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* 再見</pattern>
+<template>
+<srai>BYE</srai>
+</template>
+</category>
+
+<category>
+<pattern>*再見</pattern>
+<template>
+<srai>BYE</srai>
+</template>
+</category>
+
+<category>
+<pattern>再見</pattern>
+<template>
+<srai>BYE</srai>
+</template>
+</category>
+
+<category>
+<pattern>BYE</pattern>
+<template>
+<random>
+<li>再見<get name="name"/>.</li>
+<li>再見啦, <get name="name"/>.</li>
+<li>下次見, <get name="name"/>.</li>
+<li>謝謝你陪我聊天, <get name="name"/>.</li>
+<li>改天見, <get name="name"/>.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>_</pattern>  <!-- 前一個回應是「我怎麼稱呼你」時，這個底線才會 match  -->
+<that>我怎麼稱呼你</that>
+<template>
+<think>               <!-- 做一些處理，而不想讓使用者看到的部分 -->
+  <set name="personality">average</set>
+  <set name="name"><formal><star/></formal></set> 
+  <!-- <formal> 可將 * 比對到的字串的字首變大寫，如：sam tseng 變成 Sam Tseng
+       參見 http://www.alicebot.org/TR/2011/ 的 7.2.3. Formal -->
+</think>
+很高興見到你, <get name="name"/>.
+</template>
+</category>
+
+<category>
+  <pattern>*</pattern>
+  <template>
+    <condition>
+      <li><srai>INACTIVITYQUESTIONS</srai></li>
+    </condition>
+  </template>
+</category>
+
+<category>
+<pattern>INACTIVITYQUESTIONS</pattern>
+<template>
+<condition>
+<li name="name" value="">我怎麼稱呼你?</li>  <!-- -->
+<li><srai>ASK USER A QUESTION</srai></li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>ASK USER A QUESTION</pattern>
+<template>
+<condition>
+<li name="age" value="">你多大了?</li>
+<!-- <li name="job" value="">你的職業是?</li> -->
+<!-- <li name="favmovie" value="">你最喜歡的電影是?</li> -->
+<!-- <li name="location" value="">你住哪呢?</li> -->
+<!-- <li name="eyecolor" value="">What color are your eyes?</li> -->
+<!-- <li name="haircolor" value="">What color is your hair?</li> -->
+<li name="favcolor" value="">你最喜歡什麼顔色?</li>
+</condition>
+</template>
+</category>
+
+<category>
+<pattern>* 了</pattern>
+<that>你多大了</that>
+<template>
+<think><set name="age"><formal><star/></formal></set></think>
+<srai>NAME AGE</srai>
+</template>
+</category>
+
+<category>
+<pattern>我 * 了</pattern>
+<that>你多大了</that>
+<template>
+<think><set name="age"><formal><star/></formal></set></think>
+<srai>NAME AGE</srai>
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>你多大了</that>
+<template>
+<think><set name="age"><formal><star/></formal></set></think>
+<srai>NAME AGE</srai>
+</template>
+</category>
+
+<category>
+<pattern>NAME AGE</pattern>
+<template>
+<random>
+<li>哇, <get name="age"/> 歲, 如花似玉的年齡.</li>
+<li>你都 <get name="age"/> 歲了, 好老.</li>
+<li><get name="age"/> 歲, 我比你年輕好多好多.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>_</pattern>
+<that>你最喜歡什麼顔色</that>
+<template>
+<think><set name="favcolor"><formal><star/></formal></set></think>
+<get name="favcolor"/>, 我也喜歡, 不過我更喜歡透明色.
+</template>
+</category>
+
+<category>
+<pattern>一個*</pattern>
+<template>
+<!-- 那個叫<set name="it"><person/></set>東西是什麼玩意? 原始回應少個「的」-->
+那個叫<set name="it"><person/></set>的東西是什麼玩意?
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<template>
+<random>
+<li>哈哈</li>
+<li>那是什麼？</li>
+<li>什麼呀，我不懂耶。</li>
+</random>
+</template>
+</category>
+
+
+<category>
+<pattern>生日快樂</pattern>
+<template>
+<random>
+<li>今天是<date format="%Y年%m月%d日" />, 不是我生日.</li>
+<li>謝謝，就知道你對我最好。</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>你懂多少 *</pattern>
+<template>
+我懂<size />條規則.
+</template>
+</category>
+
+<category>
+<pattern>你的版本 *</pattern>
+<template>
+我已經<version />了.
+</template>
+</category>
+
+<category>
+<pattern>說錯 *</pattern>
+<template>
+那我應該怎麼說
+</template>
+</category>
+
+<category>
+<pattern>這麼說不 *</pattern>
+<template>
+那我應該怎麼說
+</template>
+</category>
+
+<category>
+<pattern>這樣說不 *</pattern>
+<template>
+那我應該怎麼說
+</template>
+</category>
+
+<category>
+<pattern>應該說 *</pattern>
+<that>那我應該怎麼說</that>
+<template>
+  <srai><input index="3" /> XLEARN REPLY <star index="1" /></srai>
+</template>
+</category>
+
+<category>
+<pattern>你應該說 *</pattern>
+<that>那我應該怎麼說</that>
+<template>
+  <srai><input index="3" /> XLEARN REPLY <star index="1" /></srai>
+</template>
+</category>
+
+<category>
+  <pattern>* XLEARN REPLY *</pattern>
+  <template>
+    <system>python learn.py '<star index="1" />' '<star index="2" />'</system>
+    <learn>auto-gen.aiml</learn>
+    好的我學會了, 你可以再問我試試.
+  </template>
+</category>
+
+</aiml>

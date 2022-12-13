@@ -1,0 +1,13 @@
+<aiml version="1.0">
+
+<category>
+<pattern>LOAD AIML TW</pattern>
+<template>
+
+<!-- Load chinese AIML set -->
+<learn>*.aiml</learn>
+
+</template>
+</category>
+
+</aiml>
