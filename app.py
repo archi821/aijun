@@ -7,6 +7,8 @@ sys.path.insert(0, "../.") # "../../../../app/aiml-master/.
 import re
 import tempfile
 import random
+import schedule
+import time
 import requests
 from bs4 import BeautifulSoup
 
@@ -209,6 +211,21 @@ def Horoscopes():
         link = "https://horoscope.dice4rich.com/" + data['href']
         content += '{}\n{}\n'.format(title, link)
     return content
+
+def job():
+    print("該睡覺了...")
+
+schedule.every().day.at("00:00", "Asia/Taipei").do(job)
+
+def job_with_argument(name):
+    print(f"I am {name}")
+
+schedule.every(10).seconds.do(job_with_argument, name="Ai")
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
