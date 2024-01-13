@@ -27,6 +27,16 @@
 </template>
 </category>
 
+<category>
+<pattern>你媽卡好</pattern>
+<template>
+<random>
+<li>我媽媽不是卡好，是雛鶴亜希奈</li>
+<li>我媽媽是卡好？這我不懂</li>
+<li>你媽才是卡好，你全家都卡好</li>
+</random>
+</template>
+</category>
 
 <category>
 <pattern>看個新聞</pattern>
