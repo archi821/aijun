@@ -67,7 +67,26 @@
 </template>
 </category>
 
+<category>
+<pattern>你幾歲了</pattern>
+<template>
+我今年9歲，小學3年級。
+</template>
+</category>
+
+<category>
+<pattern>不要*</pattern>
+<template>
+<random>
+<li>啥？我沒有*</li>
+<li>對...對不起。</li>
+</random>
+</template>
+</category>
+
 </aiml>
+
+
 
 
 
